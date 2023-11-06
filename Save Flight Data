@@ -1,3 +1,4 @@
+package UserDataForFlight;	
 import java.io.*;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -5,13 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class UserFlightData {
+public class userFlightData {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Enter the city you want to search for in the CSV file: ");
-        String keyword = scan.nextLine().trim().toLowerCase(); // Trim and convert to lowercase
+        System.out.println("Enter the city you want to go to: ");
+        String keyword = scan.nextLine().trim().toLowerCase();  
         String file = "src/departure (3).csv";
 
         BufferedReader reader = null;
@@ -25,12 +26,11 @@ public class UserFlightData {
                 boolean keywordFound = false;
 
                 for (String data : row) {
-                    if (data.trim().toLowerCase().contains(keyword)) { // Trim and compare (case-insensitive)
+                    if (data.trim().toLowerCase().contains(keyword)) {
                         keywordFound = true;
                         break;
                     }
                 }
-
                 if (keywordFound) {
                     matchingRows.add(line);
                 }
@@ -46,8 +46,6 @@ public class UserFlightData {
                 e.printStackTrace();
             }
         }
-
-        // Display matching rows
         if (matchingRows.isEmpty()) {
             System.out.println("No matching data found.");
         } else {
