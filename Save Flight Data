@@ -1,39 +1,60 @@
-package flightbookingsystem;
-
 import java.io.*;
-public class userFlightData {
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 
+public class UserFlightData {
 
- public static void main(String[] args) {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
 
+        System.out.println("Enter the city you want to search for in the CSV file: ");
+        String keyword = scan.nextLine().trim().toLowerCase(); // Trim and convert to lowercase
+        String file = "src/departure (3).csv";
 
-  String file = "src\\departure_3 (2).csv";
-  BufferedReader reader = null;
-  String line = "";
+        BufferedReader reader = null;
+        String line = "";
+        ArrayList<String> matchingRows = new ArrayList<>();
 
-  try {
-   reader = new BufferedReader(new FileReader(file));
-   while((line = reader.readLine()) != null) {
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                boolean keywordFound = false;
 
-    String[] row = line.split(",");
+                for (String data : row) {
+                    if (data.trim().toLowerCase().contains(keyword)) { // Trim and compare (case-insensitive)
+                        keywordFound = true;
+                        break;
+                    }
+                }
 
-    for(String index : row) {
-     System.out.printf("%-10s", index);
+                if (keywordFound) {
+                    matchingRows.add(line);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Display matching rows
+        if (matchingRows.isEmpty()) {
+            System.out.println("No matching data found.");
+        } else {
+            for (String row : matchingRows) {
+                System.out.println(row);
+            }
+        }
     }
-    System.out.println();
-   }
-  }
-  catch(Exception e) {
-   e.printStackTrace();
-  }
-  finally {
-   try {
-    reader.close();
-   } catch (IOException e) {
- 
-    e.printStackTrace();
-   }
-  }
- }
 }
 
