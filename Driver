@@ -42,21 +42,21 @@ Public class Main {
 		
 		//group seat example
 		seats[1].occupy();
-        seats[2].occupy();
-        seats[3].occupy();
-        seats[1].addtoGroup(seats[2].getseatNum());
-        seats[1].addtoGroup(seats[3].getseatNum());
-        seats[1].display();
+                seats[2].occupy();
+                seats[3].occupy();
+                seats[1].addtoGroup(seats[2].getseatNum());
+                seats[1].addtoGroup(seats[3].getseatNum());
+                seats[1].display();
         
         
-        ///example of seat not being occupied
-        seats[10].display();
+                ///example of seat not being occupied
+                seats[10].display();
         
         
-        ///display of all available seats
+                ///display of all available seats
 		for (userSeatSelection seat : seats) {
-            seat.displaySetting();
-        }
+                seat.displaySetting();
+               }
 
 
 
