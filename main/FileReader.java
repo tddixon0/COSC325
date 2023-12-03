@@ -1,10 +1,10 @@
-package edu.frostburg.cosc310.util;
+package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class TDFileReader {
+public class FileReader {
 
 	/**
 	 * Reads file and returns something

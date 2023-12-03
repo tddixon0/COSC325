@@ -2,9 +2,9 @@ package globalaccesspoint;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GlobalAccessPoint {
+public class LuggageRefNum {
 
-    private static GlobalAccessPoint instance;
+    private static LuggageRefNum instance;
 
     private class Luggage {
         private String size;
@@ -28,14 +28,14 @@ public class GlobalAccessPoint {
     private Luggage[] luggageList;
     private int index;
 
-    private GlobalAccessPoint() {
+    private LuggageRefNum() {
         luggageList = new Luggage[10];
         index = 0;
     }
 
-    public static GlobalAccessPoint getInstance() {
+    public static LuggageRefNum getInstance() {
         if (instance == null) {
-            instance = new GlobalAccessPoint();
+            instance = new LuggageRefNum();
         }
         return instance;
     }
@@ -88,7 +88,7 @@ public class GlobalAccessPoint {
     }
 
     public static void main(String[] args) {
-        GlobalAccessPoint globalAccessPoint = GlobalAccessPoint.getInstance();
+        LuggageRefNum globalAccessPoint = LuggageRefNum.getInstance();
         globalAccessPoint.processTransactions();
     }
 }
