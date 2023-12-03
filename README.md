@@ -12,3 +12,7 @@ Put distance and prices in the departure Excel so each flight can have a price
 Take the price return for the flight and have it return as a payment
 Extend all the classes properly in order
 
+TODO
+
+DONE
+Prices added to Departure Excel
