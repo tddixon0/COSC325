@@ -17,5 +17,7 @@ Where the transaction happens
 returns 6 digit, Valid payment number
 tore a payment number into an array
 
+Fix User?
+
 #DONE
 Prices added to Departure Excel
