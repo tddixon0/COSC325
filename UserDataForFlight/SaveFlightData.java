@@ -6,14 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SaveFlightData {
+public class userFlightData {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter the city you want to go to: ");
         String keyword = scan.nextLine().trim().toLowerCase();  
-        String file = "src/departure (3).csv";
+        String file = "departure.xlsx";
 
         BufferedReader reader = null;
         String line = "";
@@ -55,4 +55,3 @@ public class SaveFlightData {
         }
     }
 }
-
