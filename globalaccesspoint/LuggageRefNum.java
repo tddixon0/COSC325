@@ -1,5 +1,6 @@
-//Gavin
-    package globalaccesspoint;
+//Gavin 
+
+ package globalaccesspoint;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -69,6 +70,19 @@ public class LuggageRefNum {
 
             System.out.println("Enter luggage details - Weight(Lbs), Color, Brand:");
             size = scan.nextInt();
+            
+            if (size > 50) { // Checking if luggage weight exceeds 50 pounds
+                double extraWeight = size - 50; // Calculating extra weight
+                double extraFee = 25.0; // Setting extra fee
+                
+                // Displaying information about extra weight and charge
+                System.out.println("Your luggage weight exceeds 50 pounds.");
+                System.out.println("You have an extra weight of " + extraWeight + " pounds.");
+                System.out.println("You will be charged an extra fee of $" + extraFee + ".");
+            } else {
+                // Displaying message if luggage weight is within the limit
+                System.out.println("Your luggage is within the weight limit. No extra charges apply.");
+            }
             color = scan.next();
             brand = scan.next();
 
