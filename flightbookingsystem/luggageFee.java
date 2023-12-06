@@ -1,7 +1,7 @@
-package flight;
+package flightbookingsystem;
 import java.util.Scanner;
 
-public class LuggageChecker {
+public class luggageFee {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
