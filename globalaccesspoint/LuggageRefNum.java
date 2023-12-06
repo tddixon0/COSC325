@@ -1,27 +1,26 @@
 //Gavin
-
-package globalaccesspoint;
+    package globalaccesspoint;
 import java.util.Random;
 import java.util.Scanner;
 
-public class LuggageRefNum {
+public class luggage {
 
-    private static LuggageRefNum instance;
+    private static luggage instance;
 
     private class Luggage {
-        private String size;
+        private int size;
         private String color;
         private String brand;
         private String referenceNumber;
 
-        public Luggage(String size, String color, String brand, String referenceNumber) {
+        public Luggage(int size, String color, String brand, String referenceNumber) {
             this.size = size;
             this.color = color;
             this.brand = brand;
             this.referenceNumber = referenceNumber;
         }
 
-        @Override
+ 
         public String toString() {
             return "Size: " + size + ", Color: " + color + ", Brand: " + brand + ", Reference Number: " + referenceNumber;
         }
@@ -30,14 +29,14 @@ public class LuggageRefNum {
     private Luggage[] luggageList;
     private int index;
 
-    private LuggageRefNum() {
+    private luggage() {
         luggageList = new Luggage[10];
         index = 0;
     }
 
-    public static LuggageRefNum getInstance() {
+    public static luggage getInstance() {
         if (instance == null) {
-            instance = new LuggageRefNum();
+            instance = new luggage();
         }
         return instance;
     }
@@ -51,24 +50,25 @@ public class LuggageRefNum {
     public void processTransactions() {
         Scanner scan = new Scanner(System.in);
 
-        int transNum;
-        String size, color, brand;
+        int PayNum;
+        int size;
+        String color, brand;
         int control;
 
-        System.out.println("Type 0 to start and 1 to exit?");
+        System.out.println("Hello hope all is well! Would you like to enter a reference number ( 0 = Yes, 1 = No)");
         control = scan.nextInt();
 
         while (control == 0) {
-            System.out.println("Thank you, enter your payment number:");
-            transNum = scan.nextInt();
+            System.out.println("Thank you, please enter your payment number:");
+            PayNum = scan.nextInt();
 
-            while (String.valueOf(transNum).length() != 6) {
+            while (String.valueOf(PayNum).length() != 6) {
                 System.out.println("Payment number must be at least 6 digits. Please try again.");
-                transNum = scan.nextInt();
+                PayNum = scan.nextInt();
             }
 
-            System.out.println("Enter luggage details - size, color, brand:");
-            size = scan.next();
+            System.out.println("Enter luggage details - Weight(Lbs), Color, Brand:");
+            size = scan.nextInt();
             color = scan.next();
             brand = scan.next();
 
@@ -76,10 +76,10 @@ public class LuggageRefNum {
             luggageList[index] = luggage;
             index++;
 
-            System.out.println("Thank you, your payment number is " + transNum + " and your reference number is listed below:");
+            System.out.println("Thank you, the payment number entered was " + PayNum + " your reference number is listed below:");
             System.out.println(luggage.referenceNumber);
 
-            System.out.println("Press 0 to continue, 1 to exit the program:");
+            System.out.println(" Thank you, if you would like to register another bag press 0 if not press 1");
             control = scan.nextInt();
         }
 
@@ -90,7 +90,7 @@ public class LuggageRefNum {
     }
 
     public static void main(String[] args) {
-        LuggageRefNum globalAccessPoint = LuggageRefNum.getInstance();
+        luggage globalAccessPoint = luggage.getInstance();
         globalAccessPoint.processTransactions();
     }
 }
