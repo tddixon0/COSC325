@@ -3,9 +3,9 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class luggage {
+public class LuggageRefNum {
 
-    private static luggage instance;
+    private static Luggage instance;
 
     private class Luggage {
         private int size;
