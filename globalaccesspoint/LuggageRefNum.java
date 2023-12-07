@@ -5,7 +5,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class LuggageRefNum {
-
+	
+	public static void main(String[] args) {
+        luggage globalAccessPoint = luggage.getInstance();
+        globalAccessPoint.processTransactions();
+    }
+	
     private static Luggage instance;
 
     private class Luggage {
@@ -103,8 +108,5 @@ public class LuggageRefNum {
         }
     }
 
-    public static void main(String[] args) {
-        luggage globalAccessPoint = luggage.getInstance();
-        globalAccessPoint.processTransactions();
-    }
+    
 }
