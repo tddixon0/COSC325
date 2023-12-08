@@ -173,7 +173,7 @@ public class LuggageRefNum {
             System.out.println(luggageList[i]);
             System.out.println("Thank you! Your luggage is being loaded onto the plane");
         }
-<<<<<<< HEAD
+
 
         searchLuggageByReferenceNumber(); }
 
@@ -188,13 +188,13 @@ public class LuggageRefNum {
                     System.out.println(luggage);
                     return;
                 }
-=======
+
         System.out.println("No luggage found with the provided reference number.");
     }
             
->>>>>>> bed3bcb4f311b219a10b418b5e3f9b18a6be34ad
+
             }
 
-            System.out.println("No luggage found with that provided reference number.");
-        }
-    }
+         
+}
+
