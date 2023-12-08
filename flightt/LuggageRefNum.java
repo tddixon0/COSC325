@@ -178,7 +178,7 @@ public class LuggageRefNum {
 
         public void searchLuggageByReferenceNumber() {
             Scanner scan = new Scanner(System.in);
-            System.out.println("If you would like to see the luggage you have brought type your reference number:");
+            System.out.println("If you would like to see the luggage you have brought type in your reference number:");
             int refNum = scan.nextInt();
             String refNumStr = Integer.toString(refNum);  
 
