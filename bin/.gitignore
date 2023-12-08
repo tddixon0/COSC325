@@ -6,14 +6,11 @@
 /SaveFlightData.class
 /UserDataForFlight/
 /arrival.xlsx
-/change flight
 /departure.xlsx
-/feedback.class
+/flight/
 /flightbookingsystem/
+/flightt/
 /globalaccesspoint/
 /main/
 /testing/
-<<<<<<< HEAD
-=======
-/flightt/
->>>>>>> branch 'main' of https://github.com/tddixon0/Flight_Data.git
+/feedback.class
