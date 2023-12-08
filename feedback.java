@@ -1,6 +1,5 @@
-package flight;
 
-import java.util.Scanner;
+	import java.util.Scanner;
 
 class feedback {
     public static void main(String[] args) {

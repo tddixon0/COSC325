@@ -6,50 +6,7 @@ import java.util.Scanner;
 
 public class SaveFlightData {
 	
-	public class Luggage {
-	    private int size;
-	    private String color;
-	    private String brand;
-	    public String referenceNumber;
-
-	    public Luggage(int size, String color, String brand, String referenceNumber) {
-	        this.size = size;
-	        this.color = color;
-	        this.brand = brand;
-	        this.referenceNumber = referenceNumber;
-	    }
-	    public String toString() {
-	        return "Luggage [size=" + size + ", color=" + color + ", brand=" + brand + ", referenceNumber=" + referenceNumber + "]";
-	    }
-	}
-    private Luggage[] luggageList;
-    private int index;
-    private static SaveFlightData instance = null;
-
-    private SaveFlightData() {
-        luggageList = new Luggage[10];
-        index = 0;
-    }
-
-    public static SaveFlightData getInstance() {
-        if (instance == null) {
-            instance = new SaveFlightData();
-        }
-        return instance;
-    }
-
-    public int generatePaymentNum() {
-        Random rand = new Random();
-        return rand.nextInt(900000) + 100000; // Generates a random 6-digit number
-    }
-
-    public String generateReferenceNum() {
-        Random rand = new Random();
-        int refNum = rand.nextInt(999999);
-        return String.format("%06d", refNum);
-    }
-
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter the city you want to go to: ");
@@ -107,7 +64,49 @@ public class SaveFlightData {
             }
         }
     }
+	public class Luggage {
+	    private int size;
+	    private String color;
+	    private String brand;
+	    public String referenceNumber;
 
+	    public Luggage(int size, String color, String brand, String referenceNumber) {
+	        this.size = size;
+	        this.color = color;
+	        this.brand = brand;
+	        this.referenceNumber = referenceNumber;
+	    }
+	    public String toString() {
+	        return "Luggage [size=" + size + ", color=" + color + ", brand=" + brand + ", referenceNumber=" + referenceNumber + "]";
+	    }
+	}
+    private Luggage[] luggageList;
+    private int index;
+    private static SaveFlightData instance = null;
+
+    private SaveFlightData() {
+        luggageList = new Luggage[10];
+        index = 0;
+    }
+
+    public static SaveFlightData getInstance() {
+        if (instance == null) {
+            instance = new SaveFlightData();
+        }
+        return instance;
+    }
+
+    public int generatePaymentNum() {
+        Random rand = new Random();
+        return rand.nextInt(900000) + 100000; // Generates a random 6-digit number
+    }
+
+    public String generateReferenceNum() {
+        Random rand = new Random();
+        int refNum = rand.nextInt(999999);
+        return String.format("%06d", refNum);
+    }
+    
     public void processTransactions(int generatedPaymentNum) {
         Scanner scan = new Scanner(System.in);
 
@@ -156,3 +155,6 @@ public class SaveFlightData {
             index++;
 
             System.out.println("Thank you, your reference number is: " + luggage.referenceNumber);
+        }
+    }//end processTransactions
+}//end SaveFlightData
