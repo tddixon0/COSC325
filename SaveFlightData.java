@@ -6,12 +6,16 @@ import java.util.Scanner;
 
 public class SaveFlightData {
 	
+//	public static final String EXCEL_FILE_PATH = "./departures.xlsx./";
+	
 	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter the city you want to go to: ");
         String keyword = scan.nextLine().trim().toLowerCase();  
         String file = "C:\\Users\\gavin\\eclipse-workspace\\flightt\\src\\flightt\\DepartureFlights.csv";
+//        String file = EXCEL_FILE_PATH;
+//        String file = "";
 
         BufferedReader reader = null;
         String line = "";
