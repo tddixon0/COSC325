@@ -183,8 +183,6 @@ public class LuggageRefNum {
         }
         System.out.println("No luggage found with the provided reference number.");
     }
-
-               
             
             }
        //hii
