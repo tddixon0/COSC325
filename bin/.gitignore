@@ -6,11 +6,11 @@
 /SaveFlightData.class
 /UserDataForFlight/
 /arrival.xlsx
-/change flight
 /departure.xlsx
-/feedback.class
+/flight/
 /flightbookingsystem/
+/flightt/
 /globalaccesspoint/
 /main/
 /testing/
-/flightt/
+/feedback.class

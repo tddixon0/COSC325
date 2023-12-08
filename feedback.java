@@ -10,12 +10,8 @@ class feedback {
         System.out.println("Thank you for choosing the Flight Tracking and Booking Website!");
         System.out.println("Please provide your feedback:");
 
-        // Ask the user for their name, email, and feedback
         System.out.print("Name: ");
         String name = scanner.nextLine();
-
-//        System.out.print("Email: ");
-//        String email = scanner.nextLine();
 
         System.out.print("Feedback: ");
         String feedback = scanner.nextLine();
