@@ -1,6 +1,6 @@
 //Ty
 
-package globalaccesspoint;
+
 
 import java.util.Scanner;
 
