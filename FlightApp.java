@@ -2,11 +2,18 @@
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.*;
+
+import flightt.LuggageRefNum;
+import testing.userSeatSelection;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class FlightApp extends JFrame {
@@ -15,12 +22,18 @@ public class FlightApp extends JFrame {
 		private JPanel cardPanel;
 		private List<UserAcc> userAccount;
 		
+		 private JComboBox<String> cityComboBox;
+		 private JTextArea flightInfoTextArea;
+		 
+		 private int flightcount = 0;
+		
 		
 		public FlightApp() {
 			setTitle("Flight Booking/Tracking App");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	     	setSize(500,400);
-			
+	     	setSize(800,800);
+	     	
+	   
 			///PANELS THAT WILL APPEAR
 	     	
 	     	
@@ -185,19 +198,50 @@ public class FlightApp extends JFrame {
 			userInput.setPreferredSize(new Dimension(250,40));
 			
 			
-			///BUTTON CREATION FOR HOME PAGE
-			JButton enterButton = new JButton("Enter");
-			JButton logoutButton = new JButton("Logout");
-			JButton viewSeats = new JButton("View Seats");
-						
 			
-			viewSeats.addActionListener(new ActionListener() {
-				
+			///CREATING CITY BOX DISPLAY
+			cityComboBox = new JComboBox<>();
+	        populateCityComboBox();
+
+	        flightInfoTextArea = new JTextArea(10, 30);
+	        flightInfoTextArea.setEditable(false);
+	        
+	        JLabel chooseFlightlabel = new JLabel("Choose the city you want to go to:");
+
+	        JButton chooseCityButton = new JButton("Select");
+	        
+	        
+	        chooseCityButton.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                
+	                String selectedCity = (String) cityComboBox.getSelectedItem();
+	                if (selectedCity != null) {
+	                    displayFlights(selectedCity);
+	                }
 	            }
 	        });
-								
+	        
+	    	///BUTTON CREATION FOR HOME PAGE
+			JButton enterButton = new JButton("Enter");
+			enterButton.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent e) {
+		            String selectedFlight = userInput.getText();
+		            
+		            try {
+		            	int flightNum = Integer.parseInt(selectedFlight);
+		            	if(flightNum > 0 && flightNum <= flightcount ) {
+		            		
+		            int paymentNumber = LuggageRefNum.getInstance().generatePaymentNum();
+		            System.out.println("Your payment number is: " + paymentNumber);
+		            	} else {
+		            		JOptionPane.showMessageDialog(null, "Invalid Flight Number");
+		            	}
+		        }catch (NumberFormatException ex) {
+		        	JOptionPane.showMessageDialog(null, "Enter Numeric Value");
+		        }
+		           }
+		        }); 
+		    
+			JButton logoutButton = new JButton("Logout");
 			
 			logoutButton.addActionListener(new ActionListener() {
 				
@@ -210,16 +254,71 @@ public class FlightApp extends JFrame {
 			});
 			
 			panel.add(label);
-			panel.add(logoutButton);
-			panel.add(viewSeats);
+			panel.add(chooseFlightlabel);
 			
+			panel.add(cityComboBox);
+	        panel.add(chooseCityButton);
+	        panel.add(flightInfoTextArea);
+			
+			panel.add(logoutButton);
+		;
+			
+
 			panel.add(userInput);
 			panel.add(enterButton);
+			
+			
 			
 			return panel;
 			
 		}
-		
+	
+		private void populateCityComboBox() {
+	       ////change path if needed to run on your computer
+			
+	        String filePath = "/Users/squidtemm/git/Flight_Data/departure.csv";
+
+	        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+	            String line;
+	            while ((line = reader.readLine()) != null) {
+	                String[] row = line.split(",");
+	                if (row.length > 2) {
+	                    cityComboBox.addItem(row[2]);
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    private void displayFlights(String selectedCity) {
+	       
+	        String filePath = "/Users/squidtemm/git/Flight_Data/departure.csv";
+
+	        StringBuilder flightsInfo = new StringBuilder();
+
+	        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+	            String line;
+	            
+	            int flightNum = 1;
+	           
+	            while ((line = reader.readLine()) != null) {
+	                String[] row = line.split(",");
+	                if (row.length > 2 && row[2].equalsIgnoreCase(selectedCity)) {
+	                	flightsInfo.append("Flight: ").append(flightNum).append("\n");
+	                    flightsInfo.append("Scheduled Time: ").append(row[0]).append("\n");
+	                    flightsInfo.append("Updated Time: ").append(row[1]).append("\n");
+	                    flightsInfo.append("Airline: ").append(row[3]).append("\n\n");
+	                    flightNum++;
+	                    flightcount++;
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+
+	        flightInfoTextArea.setText(flightsInfo.toString());
+	    }
 		
 		
 		
