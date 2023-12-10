@@ -1,4 +1,4 @@
-package flightt;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -110,6 +110,8 @@ public class LuggageRefNum {
                 System.out.println("Invalid choice.");
             }
         }
+        
+        	
     }
 
     public void processTransactions(int generatedPaymentNum) {
@@ -121,11 +123,11 @@ public class LuggageRefNum {
         String brand;
         int control;
 
-        System.out.println("Hello! Would you like to enter a Luggage check in? (0 = Yes, 1 = No)");
+        System.out.println("Hello! This is luggage check-in would you like to start? (0 = Yes, 1 = No)");
         control = scan.nextInt();
 
         while (control == 0) {
-            System.out.println("Your generated payment number is: " + generatedPaymentNum);
+            System.out.println("Your payment number is: " + generatedPaymentNum);
             System.out.println("Please enter your payment number:");
             enteredPaymentNum = scan.nextInt();
 
@@ -134,7 +136,8 @@ public class LuggageRefNum {
                 enteredPaymentNum = scan.nextInt();
             }
 
-            System.out.println("Enter luggage details - Weight(Lbs), Color, Brand:");
+            System.out.println("Enter luggage details - Weight(Lbs),Color,Brand:");
+            System.out.println("Enter the weight of the luggage");
             size = scan.nextInt();
             
             if (size > 50) { // Checking if luggage weight exceeds 50 pounds
@@ -150,9 +153,9 @@ public class LuggageRefNum {
                 System.out.println("Your luggage is within the weight limit. No extra charges apply.");
             }
                 
-            System.out.println(" Color?");
+            System.out.println("Color of luggage?");
             color = scan.next();
-            System.out.println(" Brand?");
+            System.out.println("Brand of luggage?");
             brand = scan.next();
 
             Luggage luggage = new Luggage(size,color,brand, generateReferenceNum());
@@ -161,28 +164,37 @@ public class LuggageRefNum {
 
             System.out.println("Thank you, your reference number is: " + luggage.referenceNumber);
 
-            System.out.println("Thank you, if you would like to register another bag press 0, if not press 1");
+            System.out.println("If you would like to register another bag press 0, if not press 1");
             control = scan.nextInt();
         }
 
-        System.out.println("Generated Luggage Information:");
+        System.out.println("User Luggage Information:");
         for (int i = 0; i < index; i++) {
-            System.out.println(luggageList[i]);  
-            System.out.println("Your luggage is being loaded onto the plane"); }
-    }
-    public void searchLuggageByReferenceNumber() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter your reference number:");
-        int refNum = scan.nextInt();
-
-        for (Luggage luggage : luggageList) {
-        	if (luggage.getReferenceNumber().equals(refNum)) {
-                System.out.println(luggage);
-                return;
-            }
+            System.out.println(luggageList[i]);
+            System.out.println("Thank you! Your luggage is being loaded onto the plane");
         }
+
+
+        searchLuggageByReferenceNumber(); }
+
+        public void searchLuggageByReferenceNumber() {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("If you would like to see the luggage you have brought type in your reference number:");
+            int refNum = scan.nextInt();
+            String refNumStr = Integer.toString(refNum);  
+
+            for (Luggage luggage : luggageList) {
+                if (luggage.getReferenceNumber().equals(refNumStr)) {  
+                    System.out.println(luggage);
+                    return;
+                }
+
         System.out.println("No luggage found with the provided reference number.");
     }
             
+
             }
-       //hii
+
+         
+}
+
