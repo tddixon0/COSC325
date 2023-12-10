@@ -44,7 +44,7 @@ public class FlightApp extends JFrame {
 			cardPanel.add(createAccountPanel(), "CREATE ACCOUNT");
 			cardPanel.add(createLoginPanel(), "LOGIN");
 			cardPanel.add(createHomepagePanel(), "HOME PAGE");
-			cardPanel.add(createSeatSelectionPanel(), "SEAT SELCTION");
+			cardPanel.add(createLoginPanel(), "SEAT SELCTION");
 			
 			
 			
