@@ -50,7 +50,8 @@ public class userSeatSelection {
 	    }
 	
 	
-	///letting users select and un-select seats
+	///letting users select and un-select seats  
+	 
 	
 	public void occupy() {
 		occupied = true;

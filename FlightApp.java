@@ -36,7 +36,6 @@ public class FlightApp extends JFrame {
 	   
 			///PANELS THAT WILL APPEAR
 	     	
-	     	
 			cardLayout = new CardLayout();
 			cardPanel = new JPanel(cardLayout);
 			
@@ -45,6 +44,7 @@ public class FlightApp extends JFrame {
 			cardPanel.add(createAccountPanel(), "CREATE ACCOUNT");
 			cardPanel.add(createLoginPanel(), "LOGIN");
 			cardPanel.add(createHomepagePanel(), "HOME PAGE");
+			cardPanel.add(createSeatSelectionPanel(), "SEAT SELCTION");
 			
 			
 			
