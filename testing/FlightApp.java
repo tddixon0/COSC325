@@ -400,20 +400,13 @@ public class FlightApp extends JFrame {
 		private JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
-<<<<<<< HEAD
-			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());
-			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());
-			JLabel referenceLabel = new JLabel("Reference Number ");
+
+			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());//variable, flight: + whatever flight selected
+			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());//variable, flight: + selected seats. true?
+			JLabel referenceLabel = new JLabel("Reference Number "+ LuggageRefNum.Luggage.class);
 			JLabel paymentLabel = new JLabel("Payment Number: ");
 			JLabel totalPrice = new JLabel("Total Price: ");
-=======
-			JLabel flightLabel = new JLabel("Selected Flight: " ); //variable, flight: + whatever flight selected
-			JLabel seatsLabel = new JLabel("Selected Seats: "); //variable, flight: + selected seats. true?
-			JLabel referenceLabel = new JLabel("Reference Number: "+ LuggageRefNum.Luggage.class); //
-			JLabel paymentLabel = new JLabel("Payment Number: " + LuggageRefNum.getInstance());
-			JLabel totalPrice = new JLabel("Total Price: " );
->>>>>>> branch 'main' of https://github.com/tddixon0/Flight_Data.git
-			
+   
 			
 			JLabel flightValue = new JLabel(userCart.getUsersFlight());
 			List<String> selectedSeats = userCart.getUsersSeats();
