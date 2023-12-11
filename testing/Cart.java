@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Cart {
 	
-	private String usersFlight;
-	private List<String> usersSeats;
-	private String referenceNumber;
-	private int paymentNumber;
+	public String usersFlight;
+	public List<String> usersSeats;
+	public String referenceNumber;
+	public int paymentNumber;
 	
 	public Cart(String userFlight, List<String> userSeats, String referenceNumber, int paymentNumber) {
 		
