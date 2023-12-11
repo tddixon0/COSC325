@@ -64,7 +64,6 @@ public class FlightApp extends JFrame {
 			add(cardPanel);
 			setVisible(true);
 	
-			
 		}
 		
 		///class to represent the user accounts
@@ -190,7 +189,6 @@ public class FlightApp extends JFrame {
 			
 			return panel;
 		
-
 		}
 		
 		/// HOME PAGE OF THE FLIGHT APP
@@ -224,8 +222,7 @@ public class FlightApp extends JFrame {
 	                String selectedCity = (String) cityComboBox.getSelectedItem();
 	                if (selectedCity != null) {
 	                    displayFlights(selectedCity);
-	                    
-	                   
+	            
 	                }
 	            }
 	        });
@@ -264,8 +261,7 @@ public class FlightApp extends JFrame {
 					cardLayout.show(cardPanel, "VIEW CART");
 				}
 			});
-			
-		    
+			    
 			JButton logoutButton = new JButton("Logout");
 			
 			logoutButton.addActionListener(new ActionListener() {
@@ -274,8 +270,7 @@ public class FlightApp extends JFrame {
 					
 					cardLayout.show(cardPanel, "LOGIN");
 					
-				}
-				
+				}		
 			});
 			
 			panel.add(label);
@@ -398,15 +393,23 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 		
-
+/**
+ * Need to return:
+ * Selected Flight, is null rn
+ * Selected seat, is null rn
+ * Reference number is the memory loc and not actual #
+ * Payment number
+ * Seat selection
+ * @return
+ */
 		
 		public JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
 
-			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());//variable, flight: + whatever flight selected
+			JLabel flightLabel = new JLabel("Selected Flight: ");//variable, flight: + whatever flight selected
 			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());//variable, flight: + selected seats. true?
-			JLabel referenceLabel = new JLabel("Reference Number "+ LuggageRefNum.Luggage.class);
+			JLabel referenceLabel = new JLabel("Luggage Reference Number "); //+ luggage.referenceNumber);
 			JLabel paymentLabel = new JLabel("Payment Number: ");
 			JLabel totalPrice = new JLabel("Total Price: ");
    
@@ -417,7 +420,6 @@ public class FlightApp extends JFrame {
 			JLabel seatValue = new JLabel(seatsText);
 			JLabel referenceValue = new JLabel(userCart.getReferenceNumber());
 			JLabel paymentValue = new JLabel(String.valueOf(userCart.getPaymentNumber()));
-			
 			
 			panel.add(flightLabel);
 			panel.add(flightValue);
@@ -442,16 +444,12 @@ public class FlightApp extends JFrame {
 				if(seat.occupied()){
 					totalPrice += seat.getPrice();
 					
-					
 				}
 			}
 			System.out.println("Total Price: " +totalPrice);
 			return totalPrice;
-
-
-			
+	
 		}
-		
 		
 		public void seatButtonUsed(userSeatSelection seat) {
 			seat.displaySetting();
@@ -521,5 +519,4 @@ public class FlightApp extends JFrame {
 				}
 			});
 		}
-		
 	}	

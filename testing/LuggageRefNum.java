@@ -60,7 +60,12 @@ public class LuggageRefNum {
     }
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        
+       begin();
+    }//end main
+    
+    public static void begin () {
+    	Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter the city you want to go to: ");
         String keyword = scan.nextLine().trim().toLowerCase();  
@@ -117,8 +122,6 @@ public class LuggageRefNum {
                 System.out.println("Invalid choice.");
             }
         }
-        
-        	
     }
 
     public void processTransactions(int generatedPaymentNum) {
@@ -208,5 +211,4 @@ public class LuggageRefNum {
             }
         }
         
-
         }
