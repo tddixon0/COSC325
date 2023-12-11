@@ -24,9 +24,7 @@ public class FlightApp extends JFrame {
 		public CardLayout cardLayout;
 		public JPanel cardPanel;
 		public List<UserAcc> userAccount;
-		
-		
-		
+	
 		public JComboBox<String> cityComboBox;
 		public JTextArea flightInfoTextArea;
 		public userSeatSelection[] seats;
@@ -286,7 +284,6 @@ public class FlightApp extends JFrame {
 			
 			panel.add(logoutButton);
 			panel.add(viewCartButton);
-		;
 			
 
 			panel.add(userInput);
