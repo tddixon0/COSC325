@@ -382,6 +382,8 @@ public class FlightApp extends JFrame {
 				    Luggage luggage = luggageRefNum.new Luggage(weight, color, brand, luggageRefNum.generateReferenceNum());
 					luggageRefNum.addLuggage(luggage);
 					
+					System.out.println("Luggage Reference Number: " + luggage.getReferenceNumber());
+					
 					cardLayout.show(cardPanel, "VIEW CART");
 				   
 				}
@@ -431,7 +433,7 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 	
-		public void confirmSeatSelection() {
+		public double confirmSeatSelection() {
 			double totalPrice = 0.0;
 			
 			
@@ -446,6 +448,7 @@ public class FlightApp extends JFrame {
 				}
 			}
 			System.out.println("Total Price: " +totalPrice);
+			return totalPrice;
 
 
 			
