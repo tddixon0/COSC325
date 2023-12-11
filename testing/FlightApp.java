@@ -32,6 +32,7 @@ public class FlightApp extends JFrame {
 		 private userSeatSelection[] seats;
 		 private LuggageRefNum luggageRefNum;
 		 private Cart userCart;
+		
 		 
 		 private int flightcount = 0;
 		
@@ -73,9 +74,11 @@ public class FlightApp extends JFrame {
 			private String username;
 			private String password;
 			
+			
 			public UserAcc(String username, String password) {
 				this.username = username;
 				this.password = password;
+				
 			}
 			 
 			public String getUser() {
@@ -330,6 +333,7 @@ public class FlightApp extends JFrame {
 			for(int i=0; i< seats.length; i++) {
 				final int seatIndex = i; 
 				seats[i] = new userSeatSelection(i + 1, 5.0 *(i+1));
+				seats[i].setSeats(seats);
 				
 				JButton seatButton = new JButton("Seat " + (i+1));
 				seatButton.addActionListener(new ActionListener() {
@@ -398,8 +402,7 @@ public class FlightApp extends JFrame {
 		}
 		
 		private JPanel createViewCartPanel() {
-			JPanel panel = new JPanel(new GridLayout(4, 2));
-			
+			JPanel panel = new JPanel(new GridLayout(4,2));
 
 			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());//variable, flight: + whatever flight selected
 			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());//variable, flight: + selected seats. true?
@@ -424,7 +427,6 @@ public class FlightApp extends JFrame {
 			panel.add(referenceValue);
 			panel.add(paymentLabel);
 			panel.add(paymentValue);
-
 			
 			return panel;
 		}
@@ -432,17 +434,20 @@ public class FlightApp extends JFrame {
 		private void confirmSeatSelection() {
 			double totalPrice = 0.0;
 			
+			
 			System.out.println("Confirm Seats: ");
 			
 			for(userSeatSelection seat : seats) {
 				seat.display();
-				if(!seat.getgroupSeat().isEmpty()){
-					totalPrice += seat.getgroupPrice();
+				if(seat.occupied()){
+					totalPrice += seat.getPrice();
+					
 					
 				}
 			}
 			System.out.println("Total Price: " +totalPrice);
-			
+
+
 			
 		}
 		
@@ -485,8 +490,6 @@ public class FlightApp extends JFrame {
 	    private void displayFlights(String selectedCity) {
 	    	
 	        String filePath = "departure.csv";
-
-
 
 	        StringBuilder flightsInfo = new StringBuilder();
 
