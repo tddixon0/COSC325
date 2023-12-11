@@ -1,6 +1,6 @@
 //Olaolu
 
-package flightbookingsystem;
+
 
 import java.util.*;
 class FlightBooking {

@@ -1,4 +1,4 @@
-package flight;
+
 
 import java.util.Scanner;
 

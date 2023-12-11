@@ -1,30 +1,4 @@
-package main;
-//public class User {
-//		int a = 001;
-//		int b = 002;
-//		int c = 003;
-//		int d = 004;
-//		int e = 005;
-//		
-//	public static void main(String[] args) {
-//		makeUser();
-//	}//end User
-//	
-//	public static void makeUser() {
-//		User user1 = new User();  //creates user1 object
-//	    User user2 = new User();
-//	    User user3 = new User();
-//	    User user4 = new User();
-//	    User user5 = new User();
-//	    System.out.println(user1.a);  //returns user ID#
-//	    System.out.println(user2.b);
-//	    System.out.println(user3.c);
-//	    System.out.println(user4.d);
-//	    System.out.println(user5.e);
-//		
-//	}//end makeUser
-//
-//}
+
 
 
  public class User
