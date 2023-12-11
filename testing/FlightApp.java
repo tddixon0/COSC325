@@ -24,6 +24,15 @@ public class FlightApp extends JFrame {
 		public CardLayout cardLayout;
 		public JPanel cardPanel;
 		public List<UserAcc> userAccount;
+<<<<<<< HEAD
+	
+		public JComboBox<String> cityComboBox;
+		public JTextArea flightInfoTextArea;
+		public userSeatSelection[] seats;
+		public LuggageRefNum luggageRefNum;
+		public Cart userCart;
+		 
+=======
 		
 		
 		
@@ -34,6 +43,7 @@ public class FlightApp extends JFrame {
 		 private LuggageRefNum luggageRefNum;
 		 private Cart userCart;
 		
+>>>>>>> 6e15387da249772af954db21a1dd1d46a2dbccc2
 		public int flightcount = 0;
 		
 		
@@ -289,7 +299,6 @@ public class FlightApp extends JFrame {
 			
 			panel.add(logoutButton);
 			panel.add(viewCartButton);
-		;
 			
 
 			panel.add(userInput);
