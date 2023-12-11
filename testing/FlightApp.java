@@ -242,6 +242,7 @@ public class FlightApp extends JFrame {
 		            int paymentNumber = LuggageRefNum.getInstance().generatePaymentNum();
 		            System.out.println("Your payment number is: " + paymentNumber);
 		            userCart.setPaymentNumber(paymentNumber);
+		            System.out.println("Selected Flight: " + selectedFlight);
 		            cardLayout.show(cardPanel, "SEAT SELECTION");
 		            
 		            	} else {
