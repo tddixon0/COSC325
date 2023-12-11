@@ -60,18 +60,11 @@ public class FlightApp extends JFrame {
 			cardPanel.add(createSeatSelectorPanel(), "SEAT SELECTION");
 			cardPanel.add(createLuggagePanel(), "LUGGAGE");
 			cardPanel.add(createViewCartPanel(), "VIEW CART");
-			
 		
-			
-			
 			cardLayout.show(cardPanel, "CREATE ACCOUNT");
 			add(cardPanel);
 			setVisible(true);
-			
-			
-			
-
-			
+	
 			
 		}
 		
@@ -112,14 +105,7 @@ public class FlightApp extends JFrame {
 			}
 			return false;
 		}
-		
-		
-		
 	
-		
-		
-		
-		
 		///CREATION FOR USER TO MAKE AN ACCOUNT
 		
 		private JPanel createAccountPanel() {
@@ -393,10 +379,7 @@ public class FlightApp extends JFrame {
 					luggageRefNum.addLuggage(luggage);
 					
 					cardLayout.show(cardPanel, "VIEW CART");
-					
-		
-				
-		            
+				   
 				}
 			});
 			
@@ -417,11 +400,19 @@ public class FlightApp extends JFrame {
 		private JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
+<<<<<<< HEAD
 			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());
 			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());
 			JLabel referenceLabel = new JLabel("Reference Number ");
 			JLabel paymentLabel = new JLabel("Payment Number: ");
 			JLabel totalPrice = new JLabel("Total Price: ");
+=======
+			JLabel flightLabel = new JLabel("Selected Flight: " ); //variable, flight: + whatever flight selected
+			JLabel seatsLabel = new JLabel("Selected Seats: "); //variable, flight: + selected seats. true?
+			JLabel referenceLabel = new JLabel("Reference Number: "+ LuggageRefNum.Luggage.class); //
+			JLabel paymentLabel = new JLabel("Payment Number: " + LuggageRefNum.getInstance());
+			JLabel totalPrice = new JLabel("Total Price: " );
+>>>>>>> branch 'main' of https://github.com/tddixon0/Flight_Data.git
 			
 			
 			JLabel flightValue = new JLabel(userCart.getUsersFlight());
@@ -440,18 +431,11 @@ public class FlightApp extends JFrame {
 			panel.add(referenceValue);
 			panel.add(paymentLabel);
 			panel.add(paymentValue);
-			
-			
-	
-			
-			
+
 			
 			return panel;
 		}
-		
-		
-		
-		
+	
 		private void confirmSeatSelection() {
 			double totalPrice = 0.0;
 			
@@ -490,7 +474,7 @@ public class FlightApp extends JFrame {
 		private void populateCityComboBox() {
 	       ////change path if needed to run on your computer
 			
-	        String filePath = "/Users/squidtemm/git/Flight_Data/departure.csv";
+	        String filePath = "departure.csv";
 
 	        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 	            String line;
@@ -506,8 +490,10 @@ public class FlightApp extends JFrame {
 	    }
 
 	    private void displayFlights(String selectedCity) {
-	       
-	        String filePath = "/Users/squidtemm/git/Flight_Data/departure.csv";
+	    	
+	        String filePath = "departure.csv";
+
+
 
 	        StringBuilder flightsInfo = new StringBuilder();
 

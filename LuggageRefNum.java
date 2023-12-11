@@ -62,7 +62,7 @@ public class LuggageRefNum {
 
         System.out.println("Enter the city you want to go to: ");
         String keyword = scan.nextLine().trim().toLowerCase();  
-        String file = "C:\\Users\\gavin\\eclipse-workspace\\flightt\\src\\flightt\\DepartureFlights.csv";
+        String file = "departure.csv";
 
         BufferedReader reader = null;
         String line = "";
@@ -200,10 +200,8 @@ public class LuggageRefNum {
             }
     
 }
-        
+       
 
-        }
 
-         
 
 
