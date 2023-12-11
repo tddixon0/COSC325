@@ -21,19 +21,19 @@ import java.io.IOException;
 
 public class FlightApp extends JFrame {
 
-		private CardLayout cardLayout;
-		private JPanel cardPanel;
-		private List<UserAcc> userAccount;
+		public CardLayout cardLayout;
+		public JPanel cardPanel;
+		public List<UserAcc> userAccount;
 		
 		
 		
-		 private JComboBox<String> cityComboBox;
-		 private JTextArea flightInfoTextArea;
-		 private userSeatSelection[] seats;
-		 private LuggageRefNum luggageRefNum;
-		 private Cart userCart;
+		public JComboBox<String> cityComboBox;
+		public JTextArea flightInfoTextArea;
+		public userSeatSelection[] seats;
+		public LuggageRefNum luggageRefNum;
+		public Cart userCart;
 		 
-		 private int flightcount = 0;
+		public int flightcount = 0;
 		
 		
 		public FlightApp() {
@@ -70,8 +70,8 @@ public class FlightApp extends JFrame {
 		
 		///class to represent the user accounts
 		public static class UserAcc{
-			private String username;
-			private String password;
+			public String username;
+			public String password;
 			
 			public UserAcc(String username, String password) {
 				this.username = username;
@@ -88,7 +88,7 @@ public class FlightApp extends JFrame {
 			
 		}
 		////CHECKING IF USERNAME IS TAKEN
-		private boolean isUsernameTaken(String username) {
+		public boolean isUsernameTaken(String username) {
 			for(UserAcc user : userAccount) {
 				if (user.getUser().equals(username)) {
 					return true;
@@ -97,7 +97,7 @@ public class FlightApp extends JFrame {
 			return false;
 		}
 		///// CHECKING FOR VALID LOGIN 
-		private boolean ValidLogin(String username, String password) {
+		public boolean ValidLogin(String username, String password) {
 			for(UserAcc user : userAccount) {
 				if(user.getUser().equals(username) && user.getPw().equals(password)) {
 					return true;
@@ -108,7 +108,7 @@ public class FlightApp extends JFrame {
 	
 		///CREATION FOR USER TO MAKE AN ACCOUNT
 		
-		private JPanel createAccountPanel() {
+		public JPanel createAccountPanel() {
 
 			JPanel panel = new JPanel(new GridLayout(4,2));
 			
@@ -154,7 +154,7 @@ public class FlightApp extends JFrame {
 		
 		//// CREATION FOR USERS TO LOGIN TO THEIR ACCOUNT
 
-		private JPanel createLoginPanel() {
+		public JPanel createLoginPanel() {
 			JPanel panel = new JPanel(new GridLayout(3,2));
 			
 			JLabel userlabel = new JLabel("Username: ");
@@ -194,7 +194,7 @@ public class FlightApp extends JFrame {
 		
 		/// HOME PAGE OF THE FLIGHT APP
 
-		private JPanel createHomepagePanel() {
+		public JPanel createHomepagePanel() {
 			
 			
 			JPanel panel = new JPanel();
@@ -300,7 +300,7 @@ public class FlightApp extends JFrame {
 		
 		///PAGE THAT LETS USERS SELECT SEATS ON THE FLIGHTS
 		
-		private JPanel createSeatSelectorPanel() {
+		public JPanel createSeatSelectorPanel() {
 			
 			JPanel panel = new JPanel(new BorderLayout());
 			JPanel buttonPanel = new JPanel();
@@ -357,7 +357,7 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 		//CHECK IN LUGGAGE PAGE
-		private JPanel createLuggagePanel() {
+		public JPanel createLuggagePanel() {
 			JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			
 			JLabel sizeLabel = new JLabel("Enter luggage weight (lbs): ");
@@ -382,10 +382,7 @@ public class FlightApp extends JFrame {
 				   
 				}
 			});
-			
-			
-			
-			
+	
 			panel.add(sizeLabel);
 			panel.add(sizeField);
 			panel.add(colorLabel);
@@ -397,7 +394,7 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 		
-		private JPanel createViewCartPanel() {
+		public JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
 
@@ -429,7 +426,7 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 	
-		private void confirmSeatSelection() {
+		public void confirmSeatSelection() {
 			double totalPrice = 0.0;
 			
 			System.out.println("Confirm Seats: ");
@@ -447,7 +444,7 @@ public class FlightApp extends JFrame {
 		}
 		
 		
-		private void seatButtonUsed(userSeatSelection seat) {
+		public void seatButtonUsed(userSeatSelection seat) {
 			seat.displaySetting();
 			if(!seat.occupied()) {
 				seat.occupy();
@@ -458,13 +455,8 @@ public class FlightApp extends JFrame {
 				
 			}
 		}
-		
-		
-		
-		
-		
 	
-		private void populateCityComboBox() {
+		public void populateCityComboBox() {
 	       ////change path if needed to run on your computer
 			
 	        String filePath = "departure.csv";
@@ -482,11 +474,9 @@ public class FlightApp extends JFrame {
 	        }
 	    }
 
-	    private void displayFlights(String selectedCity) {
+	    public void displayFlights(String selectedCity) {
 	    	
 	        String filePath = "departure.csv";
-
-
 
 	        StringBuilder flightsInfo = new StringBuilder();
 
@@ -512,8 +502,7 @@ public class FlightApp extends JFrame {
 
 	        flightInfoTextArea.setText(flightsInfo.toString());
 	    }
-		
-		
+	
 		
 		///RUNNING THE FLIGHT APP
 		public static void main(String[] args) {
@@ -525,6 +514,3 @@ public class FlightApp extends JFrame {
 		}
 		
 	}	
-	
-	
-
