@@ -24,6 +24,7 @@ public class FlightApp extends JFrame {
 		public CardLayout cardLayout;
 		public JPanel cardPanel;
 		public List<UserAcc> userAccount;
+<<<<<<< HEAD
 	
 		public JComboBox<String> cityComboBox;
 		public JTextArea flightInfoTextArea;
@@ -31,6 +32,18 @@ public class FlightApp extends JFrame {
 		public LuggageRefNum luggageRefNum;
 		public Cart userCart;
 		 
+=======
+		
+		
+		
+
+	     private JComboBox<String> cityComboBox;
+		 private JTextArea flightInfoTextArea;
+		 private userSeatSelection[] seats;
+		 private LuggageRefNum luggageRefNum;
+		 private Cart userCart;
+		
+>>>>>>> 6e15387da249772af954db21a1dd1d46a2dbccc2
 		public int flightcount = 0;
 		
 		
@@ -71,9 +84,11 @@ public class FlightApp extends JFrame {
 			public String username;
 			public String password;
 			
+			
 			public UserAcc(String username, String password) {
 				this.username = username;
 				this.password = password;
+				
 			}
 			 
 			public String getUser() {
@@ -327,6 +342,7 @@ public class FlightApp extends JFrame {
 			for(int i=0; i< seats.length; i++) {
 				final int seatIndex = i; 
 				seats[i] = new userSeatSelection(i + 1, 5.0 *(i+1));
+				seats[i].setSeats(seats);
 				
 				JButton seatButton = new JButton("Seat " + (i+1));
 				seatButton.addActionListener(new ActionListener() {
@@ -391,6 +407,8 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 		
+
+		
 		public JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
@@ -418,7 +436,6 @@ public class FlightApp extends JFrame {
 			panel.add(referenceValue);
 			panel.add(paymentLabel);
 			panel.add(paymentValue);
-
 			
 			return panel;
 		}
@@ -426,17 +443,20 @@ public class FlightApp extends JFrame {
 		public void confirmSeatSelection() {
 			double totalPrice = 0.0;
 			
+			
 			System.out.println("Confirm Seats: ");
 			
 			for(userSeatSelection seat : seats) {
 				seat.display();
-				if(!seat.getgroupSeat().isEmpty()){
-					totalPrice += seat.getgroupPrice();
+				if(seat.occupied()){
+					totalPrice += seat.getPrice();
+					
 					
 				}
 			}
 			System.out.println("Total Price: " +totalPrice);
-			
+
+
 			
 		}
 		
