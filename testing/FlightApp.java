@@ -237,6 +237,8 @@ public class FlightApp extends JFrame {
 	                String selectedCity = (String) cityComboBox.getSelectedItem();
 	                if (selectedCity != null) {
 	                    displayFlights(selectedCity);
+	                    
+	                   
 	                }
 	            }
 	        });
@@ -251,6 +253,7 @@ public class FlightApp extends JFrame {
 		            try {
 		            	int flightNum = Integer.parseInt(selectedFlight);
 		            	if(flightNum > 0 && flightNum <= flightcount ) {
+		                
 		            		
 		            int paymentNumber = LuggageRefNum.getInstance().generatePaymentNum();
 		            System.out.println("Your payment number is: " + paymentNumber);
@@ -414,8 +417,8 @@ public class FlightApp extends JFrame {
 		private JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
-			JLabel flightLabel = new JLabel("Selected Flight: ");
-			JLabel seatsLabel = new JLabel("Selected Seats: ");
+			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());
+			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());
 			JLabel referenceLabel = new JLabel("Reference Number ");
 			JLabel paymentLabel = new JLabel("Payment Number: ");
 			JLabel totalPrice = new JLabel("Total Price: ");
