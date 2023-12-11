@@ -27,21 +27,13 @@ public class FlightApp extends JFrame {
 		
 		
 		
-<<<<<<< HEAD
-		 private JComboBox<String> cityComboBox;
+
+	     private JComboBox<String> cityComboBox;
 		 private JTextArea flightInfoTextArea;
 		 private userSeatSelection[] seats;
 		 private LuggageRefNum luggageRefNum;
 		 private Cart userCart;
 		
-=======
-		public JComboBox<String> cityComboBox;
-		public JTextArea flightInfoTextArea;
-		public userSeatSelection[] seats;
-		public LuggageRefNum luggageRefNum;
-		public Cart userCart;
->>>>>>> branch 'main' of https://github.com/tddixon0/Flight_Data.git
-		 
 		public int flightcount = 0;
 		
 		
@@ -406,14 +398,11 @@ public class FlightApp extends JFrame {
 			return panel;
 		}
 		
-<<<<<<< HEAD
-		private JPanel createViewCartPanel() {
-			JPanel panel = new JPanel(new GridLayout(4,2));
-=======
+
+		
 		public JPanel createViewCartPanel() {
 			JPanel panel = new JPanel(new GridLayout(4, 2));
 			
->>>>>>> branch 'main' of https://github.com/tddixon0/Flight_Data.git
 
 			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());//variable, flight: + whatever flight selected
 			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());//variable, flight: + selected seats. true?
