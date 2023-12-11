@@ -25,6 +25,7 @@ public class FlightApp extends JFrame {
 		public JPanel cardPanel;
 		public List<UserAcc> userAccount;
 
+	
 	     private JComboBox<String> cityComboBox;
 		 private JTextArea flightInfoTextArea;
 		 private userSeatSelection[] seats;
@@ -378,6 +379,7 @@ public class FlightApp extends JFrame {
 				    Luggage luggage = luggageRefNum.new Luggage(weight, color, brand, luggageRefNum.generateReferenceNum());
 					luggageRefNum.addLuggage(luggage);
 					
+					//reference num
 					System.out.println("Luggage Reference Number: " + luggage.getReferenceNumber());
 					
 					cardLayout.show(cardPanel, "VIEW CART");
@@ -405,9 +407,9 @@ public class FlightApp extends JFrame {
 			JLabel flightLabel = new JLabel("Selected Flight: " + userCart.getUsersFlight());//variable, flight: + whatever flight selected
 			JLabel seatsLabel = new JLabel("Selected Seats: " + userCart.getUsersSeats());//variable, flight: + selected seats. true?
 			JLabel referenceLabel = new JLabel("Reference Number "+ LuggageRefNum.Luggage.class);
-			JLabel paymentLabel = new JLabel("Payment Number: "); //+ LuggageRefNum.getInstance().generatePaymentNum()); //+ paymentNumber
+			JLabel paymentLabel = new JLabel("Payment Number: ");
 			JLabel totalPrice = new JLabel("Total Price: ");
-			
+   
 			
 			JLabel flightValue = new JLabel(userCart.getUsersFlight());
 			List<String> selectedSeats = userCart.getUsersSeats();
@@ -425,7 +427,6 @@ public class FlightApp extends JFrame {
 			panel.add(referenceValue);
 			panel.add(paymentLabel);
 			panel.add(paymentValue);
-			panel.add(totalPrice);
 			
 			return panel;
 		}
