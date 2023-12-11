@@ -416,7 +416,7 @@ public class FlightApp extends JFrame {
 			
 			JLabel flightLabel = new JLabel("Selected Flight: ");
 			JLabel seatsLabel = new JLabel("Selected Seats: ");
-			JLabel referenceLabel = new JLabel("Reference Number ");
+			JLabel referenceLabel = new JLabel("Reference Number: ");
 			JLabel paymentLabel = new JLabel("Payment Number: ");
 			JLabel totalPrice = new JLabel("Total Price: ");
 			
@@ -487,7 +487,7 @@ public class FlightApp extends JFrame {
 		private void populateCityComboBox() {
 	       ////change path if needed to run on your computer
 			
-	        String filePath = "/Users/squidtemm/git/Flight_Data/departure.csv";
+	        String filePath = "departure.csv";
 
 	        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 	            String line;
@@ -503,8 +503,10 @@ public class FlightApp extends JFrame {
 	    }
 
 	    private void displayFlights(String selectedCity) {
-	       
-	        String filePath = "/Users/squidtemm/git/Flight_Data/departure.csv";
+	    	
+	        String filePath = "departure.csv";
+
+
 
 	        StringBuilder flightsInfo = new StringBuilder();
 
