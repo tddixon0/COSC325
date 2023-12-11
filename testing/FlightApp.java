@@ -1,10 +1,13 @@
+package testing;
+
 
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.*;
 
-import flightt.LuggageRefNum;
+
 import testing.userSeatSelection;
+import testing.LuggageRefNum.Luggage;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,8 +25,13 @@ public class FlightApp extends JFrame {
 		private JPanel cardPanel;
 		private List<UserAcc> userAccount;
 		
+		
+		
 		 private JComboBox<String> cityComboBox;
 		 private JTextArea flightInfoTextArea;
+		 private userSeatSelection[] seats;
+		 private LuggageRefNum luggageRefNum;
+		 private Cart userCart;
 		 
 		 private int flightcount = 0;
 		
@@ -33,19 +41,27 @@ public class FlightApp extends JFrame {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	     	setSize(800,800);
 	     	
-	   
+	     	
 			///PANELS THAT WILL APPEAR
 	     	
 			cardLayout = new CardLayout();
 			cardPanel = new JPanel(cardLayout);
 			
+			
 			userAccount = new ArrayList<>();
+			luggageRefNum = LuggageRefNum.getInstance();
+			userCart = new Cart("", new ArrayList<>(), "", 0);
+			
+			
 			
 			cardPanel.add(createAccountPanel(), "CREATE ACCOUNT");
 			cardPanel.add(createLoginPanel(), "LOGIN");
 			cardPanel.add(createHomepagePanel(), "HOME PAGE");
-			cardPanel.add(createLoginPanel(), "SEAT SELCTION");
-			//something
+			cardPanel.add(createSeatSelectorPanel(), "SEAT SELECTION");
+			cardPanel.add(createLuggagePanel(), "LUGGAGE");
+			cardPanel.add(createViewCartPanel(), "VIEW CART");
+			
+		
 			
 			
 			cardLayout.show(cardPanel, "CREATE ACCOUNT");
@@ -96,6 +112,11 @@ public class FlightApp extends JFrame {
 			}
 			return false;
 		}
+		
+		
+		
+	
+		
 		
 		
 		
@@ -225,6 +246,7 @@ public class FlightApp extends JFrame {
 			enterButton.addActionListener(new ActionListener() {
 		        public void actionPerformed(ActionEvent e) {
 		            String selectedFlight = userInput.getText();
+		            userCart.setUsersFlight(selectedFlight);
 		            
 		            try {
 		            	int flightNum = Integer.parseInt(selectedFlight);
@@ -232,6 +254,9 @@ public class FlightApp extends JFrame {
 		            		
 		            int paymentNumber = LuggageRefNum.getInstance().generatePaymentNum();
 		            System.out.println("Your payment number is: " + paymentNumber);
+		            userCart.setPaymentNumber(paymentNumber);
+		            cardLayout.show(cardPanel, "SEAT SELECTION");
+		            
 		            	} else {
 		            		JOptionPane.showMessageDialog(null, "Invalid Flight Number");
 		            	}
@@ -240,6 +265,16 @@ public class FlightApp extends JFrame {
 		        }
 		           }
 		        }); 
+			
+			JButton viewCartButton = new JButton("View Cart");
+			
+			viewCartButton .addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					cardLayout.show(cardPanel, "VIEW CART");
+				}
+			});
+			
 		    
 			JButton logoutButton = new JButton("Logout");
 			
@@ -261,6 +296,7 @@ public class FlightApp extends JFrame {
 	        panel.add(flightInfoTextArea);
 			
 			panel.add(logoutButton);
+			panel.add(viewCartButton);
 		;
 			
 
@@ -272,6 +308,163 @@ public class FlightApp extends JFrame {
 			return panel;
 			
 		}
+		
+		///PAGE THAT LETS USERS SELECT SEATS ON THE FLIGHTS
+		
+		private JPanel createSeatSelectorPanel() {
+			
+			JPanel panel = new JPanel(new BorderLayout());
+			JPanel buttonPanel = new JPanel();
+			
+			JLabel seatLabel = new JLabel("Select your seat(s): ");
+			JButton confirmButton = new JButton("Confirm");
+			
+			confirmButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					confirmSeatSelection();
+					
+					List<String> userSeats = new ArrayList<>();
+					for(userSeatSelection seat: seats) {
+						if(seat.occupied()) {
+							userSeats.add("Seat " + seat.getseatNum());
+						}
+					}
+					userCart.setUsersSeats(userSeats);
+					
+				}
+			});
+			
+			JPanel seatPanel = new JPanel(new GridLayout(2,5));
+			
+			seats = new userSeatSelection[15];
+			
+			for(int i=0; i< seats.length; i++) {
+				final int seatIndex = i; 
+				seats[i] = new userSeatSelection(i + 1, 5.0 *(i+1));
+				
+				JButton seatButton = new JButton("Seat " + (i+1));
+				seatButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						seatButtonUsed(seats[seatIndex]);
+					}
+				});
+				seatPanel.add(seatButton);
+			}
+			
+			JButton luggageCheckButton = new JButton("Check-in Luggage");
+			luggageCheckButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					cardLayout.show(cardPanel, "LUGGAGE");
+				}
+			});
+			
+			buttonPanel.add(confirmButton);
+			buttonPanel.add(luggageCheckButton);
+			
+		    panel.add(seatLabel, BorderLayout.NORTH);
+		    panel.add(seatPanel, BorderLayout.CENTER);
+		    panel.add(buttonPanel, BorderLayout.SOUTH);
+		    
+			return panel;
+		}
+		//CHECK IN LUGGAGE PAGE
+		private JPanel createLuggagePanel() {
+			JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+			
+			JLabel sizeLabel = new JLabel("Enter luggage weight (lbs): ");
+			JTextField sizeField = new JTextField(5);
+			JLabel colorLabel = new JLabel("Enter luggage color: ");
+			JTextField colorField = new JTextField(5);
+			JLabel brandLabel = new JLabel("Enter luggage brand: ");
+			JTextField brandField = new JTextField(5);
+			
+		
+			JButton checkInButton = new JButton("Check In");
+			checkInButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int weight = Integer.parseInt(sizeField.getText());
+					String color = colorField.getText();
+					String brand = brandField.getText();
+					
+				    Luggage luggage = luggageRefNum.new Luggage(weight, color, brand, luggageRefNum.generateReferenceNum());
+					luggageRefNum.addLuggage(luggage);
+					
+				
+					
+		
+				
+		            
+				}
+			});
+			
+			
+			
+			
+			panel.add(sizeLabel);
+			panel.add(sizeField);
+			panel.add(colorLabel);
+			panel.add(colorField);
+			panel.add(brandLabel);
+			panel.add(brandField);
+			panel.add(checkInButton);
+			
+			return panel;
+		}
+		
+		private JPanel createViewCartPanel() {
+			JPanel panel = new JPanel(new GridLayout(4, 2));
+			
+			JLabel flightLabel = new JLabel("Selected Flight: ");
+			JLabel seatsLabel = new JLabel("Selected Seats: ");
+			JLabel referenceLabel = new JLabel("Reference Number ");
+			JLabel paymentLabel = new JLabel("Payment Number: ");
+			
+			
+			
+	
+			
+			
+			
+			return panel;
+		}
+		
+		
+		
+		
+		private void confirmSeatSelection() {
+			double totalPrice = 0.0;
+			
+			System.out.println("Confirm Seats: ");
+			
+			for(userSeatSelection seat : seats) {
+				seat.display();
+				if(!seat.getgroupSeat().isEmpty()){
+					totalPrice += seat.getgroupPrice();
+					
+				}
+			}
+			System.out.println("Total Price: " +totalPrice);
+			
+			
+		}
+		
+		
+		private void seatButtonUsed(userSeatSelection seat) {
+			seat.displaySetting();
+			if(!seat.occupied()) {
+				seat.occupy();
+				System.out.println("Seat " + seat.getseatNum());
+			}else {
+				seat.vacate();
+				System.out.println("Seat " + seat.getseatNum());
+				
+			}
+		}
+		
+		
+		
+		
+		
 	
 		private void populateCityComboBox() {
 	       ////change path if needed to run on your computer

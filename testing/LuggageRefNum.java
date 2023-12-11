@@ -1,11 +1,10 @@
+package testing;
 
 import java.io.*;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
-import testing.LuggageRefNum.Luggage;
 
 
 public class LuggageRefNum {
@@ -26,9 +25,12 @@ public class LuggageRefNum {
 	    public String getReferenceNumber() {
 	        return referenceNumber;
 	    }
+	    
 	    public String toString() {
 	        return "Luggage [size=" + size + ", color=" + color + ", brand=" + brand + ", referenceNumber=" + referenceNumber + "]";
 	    }
+
+
 	}
     private Luggage[] luggageList;
     private int index;
@@ -198,8 +200,12 @@ public class LuggageRefNum {
             
 
             }
-    
-}
+        public void addLuggage(Luggage luggage) {
+            if (index < luggageList.length) {
+                luggageList[index] = luggage;
+                index++;
+            }
+        }
         
 
         }
