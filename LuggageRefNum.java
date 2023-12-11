@@ -198,7 +198,12 @@ public class LuggageRefNum {
             
 
             }
+<<<<<<< HEAD:flightt/LuggageRefNum.java
+
+        
+=======
     
+>>>>>>> a879be3d0e31612dca5d5428d5209031a29f9392:LuggageRefNum.java
 }
        
 
