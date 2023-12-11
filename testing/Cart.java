@@ -44,12 +44,12 @@ public class Cart {
 	    this.usersSeats = userSeats;
 	}
 
-	public void setReferenceNumber(String referenceNum) {
+	public void setReferenceNumber(String referenceNumber) {
 	    this.referenceNumber = referenceNumber;
 	}
 
-	public void setPaymentNumber(int paymentNum) {
-	     this.paymentNumber = paymentNum;
+	public void setPaymentNumber(int paymentNumber) {
+	     this.paymentNumber = paymentNumber;
 	}
 		
 	

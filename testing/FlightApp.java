@@ -325,7 +325,7 @@ public class FlightApp extends JFrame {
 					
 					List<String> userSeats = new ArrayList<>();
 					for(userSeatSelection seat: seats) {
-						if(seat.occupied()) {
+						if(seat !=null && seat.occupied()) {
 							userSeats.add("Seat " + seat.getseatNum());
 						}
 					}
@@ -389,7 +389,7 @@ public class FlightApp extends JFrame {
 				    Luggage luggage = luggageRefNum.new Luggage(weight, color, brand, luggageRefNum.generateReferenceNum());
 					luggageRefNum.addLuggage(luggage);
 					
-				
+					cardLayout.show(cardPanel, "VIEW CART");
 					
 		
 				
@@ -418,7 +418,25 @@ public class FlightApp extends JFrame {
 			JLabel seatsLabel = new JLabel("Selected Seats: ");
 			JLabel referenceLabel = new JLabel("Reference Number ");
 			JLabel paymentLabel = new JLabel("Payment Number: ");
+			JLabel totalPrice = new JLabel("Total Price: ");
 			
+			
+			JLabel flightValue = new JLabel(userCart.getUsersFlight());
+			List<String> selectedSeats = userCart.getUsersSeats();
+			String seatsText = (selectedSeats != null) ? selectedSeats.toString() : "No seats selected";
+			JLabel seatValue = new JLabel(seatsText);
+			JLabel referenceValue = new JLabel(userCart.getReferenceNumber());
+			JLabel paymentValue = new JLabel(String.valueOf(userCart.getPaymentNumber()));
+			
+			
+			panel.add(flightLabel);
+			panel.add(flightValue);
+			panel.add(seatsLabel);
+			panel.add(seatValue);
+			panel.add(referenceLabel);
+			panel.add(referenceValue);
+			panel.add(paymentLabel);
+			panel.add(paymentValue);
 			
 			
 	
